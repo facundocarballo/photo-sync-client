@@ -30,7 +30,7 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
 });
 
 // Context Creation
-const ContextProvider: React.FC = () => {
+export const ContextProvider: React.FC<any> = (props:any) => {
     // React.useState Variables
     const [localIpAddress, setLocalIpAddress] = React.useState<string | undefined>(undefined);
     const [service, setService] = React.useState<string | undefined>(undefined);
@@ -127,7 +127,7 @@ const ContextProvider: React.FC = () => {
         handleSelect,
     }), []);
 
-    return <PhotoSyncContext.Provider value={values} />
+    return <PhotoSyncContext.Provider value={values}>{props.children}</PhotoSyncContext.Provider>
 };
 
 export function useProvider(): IPhotoSyncContext {

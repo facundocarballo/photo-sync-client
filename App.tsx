@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { VStack, NativeBaseProvider, Center, Heading, Box } from 'native-base';
+import { ContextProvider } from './src/context';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ContextProvider>
+      <NativeBaseProvider>
+        <VStack bg='gray.400'>
+          <Box h='50px' />
+          <Center> 
+            <Heading>PhotoCollector</Heading> 
+          </Center>
+        </VStack>
+      </NativeBaseProvider>
+    </ContextProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
