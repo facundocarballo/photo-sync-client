@@ -7,6 +7,7 @@ import { IP } from './src/components/IP';
 import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
 import { Sending } from './src/components/sending';
+import { Messages } from './src/components/messages';
 
 export default function App() {
   // Context
@@ -28,8 +29,8 @@ export default function App() {
       <NativeBaseProvider>
         <VStack bg='gray.400'>
           <Box h='50px' />
-          <Center> 
-            <Heading>PhotoCollector</Heading> 
+          <Center>
+            <Heading>PhotoCollector</Heading>
           </Center>
           <Box h='5px' />
           <Divider />
@@ -48,7 +49,9 @@ export default function App() {
           <Sending />
           <Divider />
           <Box h='5px' />
-          
+          <Messages />
+          <Divider />
+          <Box h='5px' />
         </VStack>
       </NativeBaseProvider>
     </ContextProvider>
