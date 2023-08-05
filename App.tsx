@@ -4,6 +4,7 @@ import { ContextProvider, useProvider } from './src/context';
 import { getData } from './src/handlers/storage';
 import { IP_ADDRESS_KEY } from './src/handlers/constants';
 import { IP } from './src/components/IP';
+import { Service } from './src/components/service';
 
 export default function App() {
   // Context
@@ -35,7 +36,10 @@ export default function App() {
           <Box h='5px' />
           <Divider />
           <Box h='5px' />
-          
+          <Service />
+          <Box h='5px' />
+          <Divider />
+          <Box h='5px' />
         </VStack>
       </NativeBaseProvider>
     </ContextProvider>
