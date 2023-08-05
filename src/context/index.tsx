@@ -10,7 +10,7 @@ import { getMessage, sendMessage } from '../handlers/Messages';
 // Context Initialization
 const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     // Attributes
-    localIpAddress: undefined,
+    localIpAddress: null,
     service: undefined,
     infoMessage: [],
     amountSended: 0,
@@ -32,7 +32,7 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
 // Context Creation
 export const ContextProvider: React.FC<any> = (props:any) => {
     // React.useState Variables
-    const [localIpAddress, setLocalIpAddress] = React.useState<string | undefined>(undefined);
+    const [localIpAddress, setLocalIpAddress] = React.useState<string | null>(null);
     const [service, setService] = React.useState<string | undefined>(undefined);
     const [infoMessage, setInfoMessage] = React.useState<string[]>([]);
     const [amountSended, setAmountSended] = React.useState<number | undefined>(0);

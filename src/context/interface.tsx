@@ -2,7 +2,7 @@ import * as MediaLibrary from 'expo-media-library';
 
 export interface IPhotoSyncContext {
     // Attributes
-    localIpAddress: string | undefined,
+    localIpAddress: string | null,
     service: string | undefined,
     infoMessage: string[],
     amountSended: number | undefined,
@@ -10,7 +10,7 @@ export interface IPhotoSyncContext {
     assetsToSend: MediaLibrary.Asset[] | undefined,
 
     // Methods
-    setLocalIpAddress: (_localIpAddress: string|undefined) => void,
+    setLocalIpAddress: (_localIpAddress: string|null) => void,
     setService: (_service: string|undefined) => void,
     setInfoMessage: (_infoMessage: string[]) => void,
     setAmountSended: (_amountSended: number|undefined) => void,
