@@ -5,6 +5,7 @@ import { getData } from './src/handlers/storage';
 import { IP_ADDRESS_KEY } from './src/handlers/constants';
 import { IP } from './src/components/IP';
 import { Service } from './src/components/service';
+import { Reset } from './src/components/reset';
 
 export default function App() {
   // Context
@@ -38,6 +39,9 @@ export default function App() {
           <Box h='5px' />
           <Service />
           <Box h='5px' />
+          <Divider />
+          <Box h='5px' />
+          <Reset />
           <Divider />
           <Box h='5px' />
         </VStack>
