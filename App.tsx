@@ -6,6 +6,7 @@ import { IP_ADDRESS_KEY } from './src/handlers/constants';
 import { IP } from './src/components/IP';
 import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
+import { Sending } from './src/components/sending';
 
 export default function App() {
   // Context
@@ -44,6 +45,10 @@ export default function App() {
           <Reset />
           <Divider />
           <Box h='5px' />
+          <Sending />
+          <Divider />
+          <Box h='5px' />
+          
         </VStack>
       </NativeBaseProvider>
     </ContextProvider>
