@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, NativeBaseProvider, Center, Heading, Box, Text } from 'native-base';
+import { VStack, NativeBaseProvider, Center, Heading, Box } from 'native-base';
 import { ContextProvider, useProvider } from './src/context';
 import { getData } from './src/handlers/storage';
 import { IP_ADDRESS_KEY } from './src/handlers/constants';
@@ -9,7 +9,6 @@ import { Reset } from './src/components/reset';
 import { Sending } from './src/components/sending';
 import { Messages } from './src/components/messages';
 import { TheDivider } from './src/components/divider/divider';
-import { Alert } from './src/components/alert';
 
 export default function App() {
   // Context
