@@ -1,7 +1,9 @@
 import React from "react";
-import { VStack, HStack, Box, Spacer, Text, Button, Center, InfoIcon } from "native-base";
+import { VStack, HStack, Box, Spacer, Text, Button, Center, InfoIcon, Input } from "native-base";
 import { useProvider } from "../../context";
 import { Alert } from "../alert";
+import { saveData } from "../../handlers/storage";
+import { IP_ADDRESS_KEY } from "../../handlers/constants";
 
 export const IP = () => {
     // Context
@@ -9,17 +11,21 @@ export const IP = () => {
 
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
+    const [ipAddress, setIpAddress] = React.useState<string>('');
 
 
     // Methods
-    const handleGetIpAddress = async () => { }
+    const handleSaveIP = async () => {
+        setLocalIpAddress(ipAddress);
+        await saveData(IP_ADDRESS_KEY, ipAddress);
+    }
 
     // Component
     return (
         <>
             <Alert
                 title="IP Address"
-                info="This app needs the IP Address of your computer where it's running the server to connect with."
+                info="This app needs the IP Address of your computer where it's running the server to connect with. Check the Desktop App to see your IP Address."
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
@@ -46,7 +52,15 @@ export const IP = () => {
                 </Center>
                 <Box h='10px' />
                 <Center>
-                    <Button w='80%' bg='blue.500' onPress={handleGetIpAddress}>GET IP ADDRESS</Button>
+                    <Input
+                    placeholder="192.168.1.39"
+                    value={ipAddress}
+                    onChangeText={setIpAddress}
+                    w='60%'
+                    padding={3}
+                    borderRadius={10}
+                    />
+                    <Button bg='blue.500' onPress={handleSaveIP}>SAVE</Button>
                 </Center>
             </VStack>
         </>
