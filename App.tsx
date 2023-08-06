@@ -1,5 +1,5 @@
 import React from 'react';
-import { VStack, NativeBaseProvider, Center, Heading, Box, Divider } from 'native-base';
+import { VStack, NativeBaseProvider, Center, Heading, Box, Text } from 'native-base';
 import { ContextProvider, useProvider } from './src/context';
 import { getData } from './src/handlers/storage';
 import { IP_ADDRESS_KEY } from './src/handlers/constants';
@@ -8,6 +8,8 @@ import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
 import { Sending } from './src/components/sending';
 import { Messages } from './src/components/messages';
+import { TheDivider } from './src/components/divider/divider';
+import { Alert } from './src/components/alert';
 
 export default function App() {
   // Context
@@ -27,32 +29,25 @@ export default function App() {
   return (
     <ContextProvider>
       <NativeBaseProvider>
-        <VStack bg='gray.400'>
-          <Box h='50px' />
-          <Center>
-            <Heading>PhotoCollector</Heading>
-          </Center>
-          <Box h='5px' />
-          <Divider />
-          <Box h='5px' />
-          <IP />
-          <Box h='5px' />
-          <Divider />
-          <Box h='5px' />
-          <Service />
-          <Box h='5px' />
-          <Divider />
-          <Box h='5px' />
-          <Reset />
-          <Divider />
-          <Box h='5px' />
-          <Sending />
-          <Divider />
-          <Box h='5px' />
-          <Messages />
-          <Divider />
-          <Box h='5px' />
-        </VStack>
+        <>
+          <VStack bg='gray.200'>
+            <Box h='50px' />
+            <Center>
+              <Heading>PhotoCollector</Heading>
+            </Center>
+            <TheDivider />
+            <IP />
+            <TheDivider />
+            <Service />
+            <TheDivider />
+            <Reset />
+            <TheDivider />
+            <Sending />
+            <TheDivider />
+            <Messages />
+            <TheDivider />
+          </VStack>
+        </>
       </NativeBaseProvider>
     </ContextProvider>
   );

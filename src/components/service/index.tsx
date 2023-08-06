@@ -22,7 +22,7 @@ export const Service = () => {
                     <Select
                         selectedValue={service}
                         minWidth='60%'
-                        minHeight='50px'
+                        minHeight='40px'
                         accessibilityLabel="Choose Service"
                         placeholder="Choose Service"
                         _selectedItem={{
@@ -37,14 +37,16 @@ export const Service = () => {
                         <Select.Item label="Select some Photos/Videos" value={SERVICE_SELECT} />
                     </Select>
                     <Spacer />
-                    <Button
-                        bg='blue.500'
-                        minW='100px'
-                        fontSize='20px'
-                        fontWeight='bold'
-                        onPress={handleService}>
-                        Send
-                    </Button>
+                    <Center>
+                        <Button
+                            bg='blue.500'
+                            minW='100px'
+                            h='40px'
+                            fontWeight='bold'
+                            onPress={handleService}>
+                            Send
+                        </Button>
+                    </Center>
                     <Box w='10px' />
                 </HStack>
             </VStack>
