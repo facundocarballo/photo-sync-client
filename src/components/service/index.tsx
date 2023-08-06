@@ -6,13 +6,25 @@ import { Alert } from "../alert";
 
 export const Service = () => {
     // Context
-    const { service, setService } = useProvider();
+    const { service, setService, handlePhotos, handleSelect, handleVideos } = useProvider();
 
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
     // Methods
-    const handleService = async () => { };
+    const handleService = async () => {
+        switch (service) {
+            case SERVICE_PHOTOS:
+                await handlePhotos();
+                break;
+            case SERVICE_VIDEOS:
+                await handleVideos();
+                break;
+            case SERVICE_SELECT:
+                await handleSelect();
+                break;
+        }
+    };
 
     // Components
     return (
