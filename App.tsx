@@ -33,7 +33,7 @@ export default function App() {
           <VStack bg='gray.200'>
             <Box h='50px' />
             <Center>
-              <Heading>PhotoCollector</Heading>
+              <Heading>PhotoSync</Heading>
             </Center>
             <TheDivider />
             <IP />

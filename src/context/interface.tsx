@@ -7,10 +7,7 @@ export interface IPhotoSyncContext {
     infoMessage: string[],
     amountSended: number | undefined,
     totalAmount: number | undefined,
-    assetsToSend: MediaLibrary.Asset[] | undefined,
-    alertIsOpen: boolean,
-    alertTitle: string,
-    alertInfo: string,
+    assetsToSend: MediaLibrary.Asset[] | undefined
 
     // React useState Methods
     setLocalIpAddress: (_localIpAddress: string | null) => void,
@@ -18,17 +15,11 @@ export interface IPhotoSyncContext {
     setInfoMessage: (_infoMessage: string[]) => void,
     setAmountSended: (_amountSended: number | undefined) => void,
     setTotalAmount: (_totalAmount: number | undefined) => void,
-    setAlertIsOpen: (_alertIsOpen: boolean) => void,
-    setAlertTitle: (_alertTitle: string) => void,
-    setAlertInfo: (_alertInfo: string) => void,
 
     // Methods
     handlePhotos: () => Promise<boolean>,
     handleVideos: () => Promise<boolean>,
     handleSelect: () => Promise<boolean>,
-
-
-    // AlertDialog
 
 
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import { VStack, HStack, Box, Spacer, Text, Button, Center, InfoIcon, AlertDialog } from "native-base";
+import { VStack, HStack, Box, Spacer, Text, Button, Center, InfoIcon } from "native-base";
 import { useProvider } from "../../context";
 import { Alert } from "../alert";
 
 export const IP = () => {
     // Context
-    const { localIpAddress, setLocalIpAddress, setAlertIsOpen } = useProvider();
+    const { localIpAddress, setLocalIpAddress } = useProvider();
 
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);

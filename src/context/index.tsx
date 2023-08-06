@@ -16,9 +16,6 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     amountSended: 0,
     totalAmount: 0,
     assetsToSend: [],
-    alertIsOpen: false,
-    alertTitle: '',
-    alertInfo: '',
 
     // React useState Methods
     setLocalIpAddress: () => { },
@@ -26,9 +23,6 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     setInfoMessage: () => { },
     setAmountSended: () => { },
     setTotalAmount: () => { },
-    setAlertIsOpen: () => { },
-    setAlertTitle: () => { },
-    setAlertInfo: () => { },
 
     // Methods
     handlePhotos: async () => false,
@@ -45,9 +39,6 @@ export const ContextProvider: React.FC<any> = (props:any) => {
     const [infoMessage, setInfoMessage] = React.useState<string[]>([]);
     const [amountSended, setAmountSended] = React.useState<number | undefined>(0);
     const [totalAmount, setTotalAmount] = React.useState<number | undefined>(0);
-    const [alertIsOpen, setAlertIsOpen] = React.useState<boolean>(false);
-    const [alertTitle, setAlertTitle] = React.useState<string>('');
-    const [alertInfo, setAlertInfo] = React.useState<string>('');
 
     // Variables
     let assetsToSend: MediaLibrary.Asset[] = [];
@@ -128,18 +119,12 @@ export const ContextProvider: React.FC<any> = (props:any) => {
         amountSended,
         totalAmount,
         assetsToSend,
-        alertIsOpen,
-        alertTitle,
-        alertInfo,
         
         setLocalIpAddress,
         setService,
         setInfoMessage,
         setAmountSended,
         setTotalAmount,
-        setAlertIsOpen,
-        setAlertTitle,
-        setAlertInfo,
 
         handlePhotos,
         handleVideos,
