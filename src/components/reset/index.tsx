@@ -1,6 +1,10 @@
 import React from "react";
+import * as MediaLibrary from 'expo-media-library';
 import { Center, Button, HStack, Box, InfoIcon, Spacer } from "native-base";
 import { Alert } from "../alert";
+import { getAssets } from "../../handlers/assets";
+import { PHOTO_MEDIA_TYPE, VIDEO_MEDIA_TYPE } from "../../handlers/constants";
+import { saveData } from "../../handlers/storage";
 
 export const Reset = () => {
 
@@ -8,7 +12,17 @@ export const Reset = () => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
     // Methods 
-    const handleReset = async () => { };
+    const handleReset = async () => { 
+        let arr: MediaLibrary.Asset[] = [];
+        const images = await getAssets(PHOTO_MEDIA_TYPE);
+        const videos = await getAssets(VIDEO_MEDIA_TYPE);
+        images?.forEach((img) => arr.push(img));
+        videos?.forEach((vid) => arr.push(vid));
+
+        for (const asset of arr) {
+            await saveData(asset.id, null);
+        }
+    };
 
     return (
         <>
