@@ -31,3 +31,5 @@ export const ERROR_GETTING_ASSETS_NEEDEDS = "Error getting assets needed.";
 export const ERROR_ASSETS_TO_SEND_UNDEFINED = "Assets to send is undefined.";
 export const ERROR_SENDING_MESSAGE = "Error trying to send the asset to your computer. Try to crete the server again and then send the assets that you want.";
 export const ERROR_AMOUNT_SENDED_UNDEFINED = "Amount sended is undefined.";
+export const ERROR_IMAGE_PICKER = "Error getting the assets from the Image Picker.";
+export const ERROR_NO_ASSETS = "No assets in your gallery to send."

@@ -2,8 +2,8 @@ import React from 'react';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from "expo-image-picker";
 import { IPhotoSyncContext } from './interface';
-import { findAsset, getAssetsNeeded, saveAsset, sendAssets } from '../handlers/assets';
-import { IMAGE_ENDPOINT, PHOTO_MEDIA_TYPE, PORT, VIDEO_ENDPOINT, VIDEO_MEDIA_TYPE } from '../handlers/constants';
+import { findAsset, getAssetsNeeded, saveAsset } from '../handlers/assets';
+import { ERROR_AMOUNT_SENDED_UNDEFINED, ERROR_NO_ASSETS, ERROR_SAVING_DATA, ERROR_SENDING_MESSAGE, IMAGE_ENDPOINT, PHOTO_MEDIA_TYPE, PORT, VIDEO_ENDPOINT, VIDEO_MEDIA_TYPE } from '../handlers/constants';
 import { getMessage, sendMessage } from '../handlers/Messages';
 
 
@@ -15,7 +15,6 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     infoMessage: [],
     amountSended: 0,
     totalAmount: 0,
-    assetsToSend: [],
 
     // React useState Methods
     setLocalIpAddress: () => { },
@@ -32,7 +31,7 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
 });
 
 // Context Creation
-export const ContextProvider: React.FC<any> = (props:any) => {
+export const ContextProvider: React.FC<any> = (props: any) => {
     // React.useState Variables
     const [localIpAddress, setLocalIpAddress] = React.useState<string | null>(null);
     const [service, setService] = React.useState<string | undefined>(undefined);
@@ -41,7 +40,7 @@ export const ContextProvider: React.FC<any> = (props:any) => {
     const [totalAmount, setTotalAmount] = React.useState<number | undefined>(0);
 
     // Variables
-    let assetsToSend: MediaLibrary.Asset[] = [];
+
 
     // Methods
     function getImgPath(): string {
@@ -52,36 +51,81 @@ export const ContextProvider: React.FC<any> = (props:any) => {
         return `http://${localIpAddress}:${PORT}/${VIDEO_ENDPOINT}`;
     }
 
+    async function sendAssets(path: string, assetsToSend: MediaLibrary.Asset[]): Promise<boolean> {
+        let res: boolean = false;
+        let info: string[] = [];
+
+        for (const asset of assetsToSend) {
+            const message = await getMessage(asset);
+
+            res = await sendMessage(message, path);
+            if (!res) {
+                info = infoMessage;
+                info.push(ERROR_SENDING_MESSAGE);
+                setInfoMessage(info);
+                return false;
+            }
+
+            res = await saveAsset(asset);
+            if (!res) {
+                info = infoMessage;
+                info.push(ERROR_SAVING_DATA);
+                setInfoMessage(info);
+                return false;
+            }
+
+            if (amountSended == undefined) {
+                info = infoMessage;
+                info.push(ERROR_AMOUNT_SENDED_UNDEFINED);
+                setInfoMessage(info);
+                return false;
+            };
+
+            setAmountSended(prevAmountSended => prevAmountSended != undefined ? prevAmountSended + 1 : undefined);
+        }
+
+        return true;
+    }
+
     async function handlePhotos(): Promise<boolean> {
         const assets = await getAssetsNeeded(PHOTO_MEDIA_TYPE);
-        if (assets == null) return false;
-
-        setTotalAmount(assetsToSend.length);
-        const res = await sendAssets(getImgPath());
-        assetsToSend = [];
-
-        return res;
+        if (assets == null) {
+            let info = infoMessage;
+            info.push(ERROR_NO_ASSETS);
+            setInfoMessage(info);
+            return false;
+        }
+        setTotalAmount(assets.length);
+        return await sendAssets(getImgPath(), assets);
     }
 
     async function handleVideos(): Promise<boolean> {
         const assets = await getAssetsNeeded(VIDEO_MEDIA_TYPE);
-        if (assets == null) return false;
-
-        setTotalAmount(assetsToSend.length);
-        const res = await sendAssets(getImgPath());
-        assetsToSend = [];
-
-        return res;
+        if (assets == null) {
+            let info = infoMessage;
+            info.push(ERROR_NO_ASSETS);
+            setInfoMessage(info);
+            return false;
+        }
+        setTotalAmount(assets.length);
+        return await sendAssets(getImgPath(), assets);
     }
 
     async function handleSelect(): Promise<boolean> {
+        let assetsToSend: MediaLibrary.Asset[] = [];
+
         // Get All assets to send
         const images = await getAssetsNeeded(PHOTO_MEDIA_TYPE);
         const videos = await getAssetsNeeded(VIDEO_MEDIA_TYPE);
-        if (images == null || videos == null) return false;
+        if (images == null && videos == null) {
+            let info = infoMessage;
+            info.push(`All of your photos and videos are stored in the server. If you want to send it again, press the RESET Button.`);
+            setInfoMessage(info);
+            return true;
+        }
 
-        images.forEach(img => assetsToSend.push(img));
-        videos.forEach(vid => assetsToSend.push(vid));
+        images?.forEach(img => assetsToSend.push(img));
+        videos?.forEach(vid => assetsToSend.push(vid));
 
         // Get ImagePickerAsset
         const result = await ImagePicker.launchImageLibraryAsync({
@@ -91,7 +135,12 @@ export const ContextProvider: React.FC<any> = (props:any) => {
 
         const assets = result.assets;
 
-        if (assets == null) return false;
+        if (assets == null) {
+            let info = infoMessage;
+            info.push(ERROR_NO_ASSETS);
+            setInfoMessage(info);
+            return false;
+        }
 
         setTotalAmount(assets.length);
 
@@ -112,14 +161,13 @@ export const ContextProvider: React.FC<any> = (props:any) => {
         return true;
     }
 
-    const values = React.useMemo(() => ({
+    const values = {
         localIpAddress,
         service,
         infoMessage,
         amountSended,
         totalAmount,
-        assetsToSend,
-        
+
         setLocalIpAddress,
         setService,
         setInfoMessage,
@@ -129,7 +177,7 @@ export const ContextProvider: React.FC<any> = (props:any) => {
         handlePhotos,
         handleVideos,
         handleSelect,
-    }), []);
+    };
 
     return <PhotoSyncContext.Provider value={values}>{props.children}</PhotoSyncContext.Provider>
 };

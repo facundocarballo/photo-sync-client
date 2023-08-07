@@ -1,6 +1,6 @@
 import { VStack, Text, Box, Center, Heading } from "native-base";
 import { useProvider } from "../../context";
-import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export const Messages = () => {
     // Context
@@ -18,8 +18,8 @@ export const Messages = () => {
                     </Center> : null
             }
             {
-                infoMessage.map((msg) =>
-                    <VStack key={v4()}>
+                infoMessage.map((msg, idx) =>
+                    <VStack key={idx}>
                         <Box h='5px' />
                         <Text paddingX={2}>{msg}</Text>
                     </VStack>)

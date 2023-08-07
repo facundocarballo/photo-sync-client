@@ -1,27 +1,44 @@
 import React from "react";
 import { CheckIcon, HStack, Select, Box, Spacer, Button, VStack, Center, Text, InfoIcon } from "native-base";
 import { useProvider } from "../../context";
-import { SERVICE_PHOTOS, SERVICE_SELECT, SERVICE_VIDEOS } from "../../handlers/constants";
+import { ERROR_IMAGE_PICKER, SERVICE_PHOTOS, SERVICE_SELECT, SERVICE_VIDEOS } from "../../handlers/constants";
 import { Alert } from "../alert";
 
 export const Service = () => {
     // Context
-    const { service, setService, handlePhotos, handleSelect, handleVideos } = useProvider();
+    const {
+        service,
+        infoMessage,
+
+        setService,
+        handlePhotos,
+        handleVideos,
+        handleSelect,
+        setInfoMessage
+    } = useProvider();
 
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
     // Methods
     const handleService = async () => {
+        let res: boolean = false;
+        let info: string[] = [];
+        setInfoMessage([]); // adding this line, the component of the messages render perfectly.
         switch (service) {
             case SERVICE_PHOTOS:
-                await handlePhotos();
+                res = await handlePhotos();
                 break;
             case SERVICE_VIDEOS:
                 await handleVideos();
                 break;
             case SERVICE_SELECT:
-                await handleSelect();
+                res = await handleSelect();
+                if (!res) {
+                    info = infoMessage;
+                    info.push(ERROR_IMAGE_PICKER);
+                    setInfoMessage(info);
+                }
                 break;
         }
     };

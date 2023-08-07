@@ -6,8 +6,7 @@ export interface IPhotoSyncContext {
     service: string | undefined,
     infoMessage: string[],
     amountSended: number | undefined,
-    totalAmount: number | undefined,
-    assetsToSend: MediaLibrary.Asset[] | undefined
+    totalAmount: number | undefined
 
     // React useState Methods
     setLocalIpAddress: (_localIpAddress: string | null) => void,

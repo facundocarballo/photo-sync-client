@@ -1,8 +1,8 @@
 import React from 'react';
-import { VStack, NativeBaseProvider, Center, Heading, Box } from 'native-base';
+import { VStack, NativeBaseProvider, Center, Heading, Box, Button } from 'native-base';
 import { ContextProvider, useProvider } from './src/context';
 import { getData } from './src/handlers/storage';
-import { IP_ADDRESS_KEY } from './src/handlers/constants';
+import { ERROR_GETTING_DATA, IP_ADDRESS_KEY } from './src/handlers/constants';
 import { IP } from './src/components/IP';
 import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
@@ -11,20 +11,6 @@ import { Messages } from './src/components/messages';
 import { TheDivider } from './src/components/divider/divider';
 
 export default function App() {
-  // Context
-  const { setLocalIpAddress } = useProvider();
-
-  // Methods
-  const onCreate = async () => {
-    const ip = await getData(IP_ADDRESS_KEY);
-    setLocalIpAddress(ip);
-  };
-
-  // UseEffect
-  React.useEffect(() => {
-    onCreate();
-  }, []);
-
   return (
     <ContextProvider>
       <NativeBaseProvider>
