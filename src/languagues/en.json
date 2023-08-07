@@ -1,0 +1,30 @@
+{
+    "ip_address_title": "IP Address",
+    "ip_address_info": [
+        "This app needs the IP Address of your computer where it's running the server to connect with.",
+        "Check the Desktop App to see your IP Address."
+    ],
+    "ip_address_get_msg": "You have to save the IP Address of your server",
+    "ip_address_save": "SAVE",
+    "service_title": "Service",
+    "service_info": [
+        "This app have three services that you can use to send your photos and videos to your computer.",
+        "1. (SEND PHOTOS [ALL]) You can send all the photos of your smartphone.",
+        "2. (SEND VIDEOS [ALL]) You can send all the videos that you have in your smartphone.",
+        "3. (SELECT Photos/Videos) You can send some selected photos and videos of your smartphone."
+    ],
+    "service_select_msg": "Select the service that you want to use",
+    "service_select_placeholder": "Choose Service",
+    "service_select_photos_label": "SEND PHOTOS [ALL]",
+    "service_select_videos_label": "SEND VIDEOS [ALL]",
+    "service_select_select_label": "SELECT Photos/Videos",
+    "service_send": "SEND",
+    "reset_title": "RESET",
+    "reset_info": [
+        "This RESET Button will delete of the memory all the images/videos that you sended.",
+        "In which cases I will have to use these RESET Button?",
+        "- Only when we want to send again images or videos that we sent previously"
+    ],
+    "sending_title": "Sending",
+    "messages_title": "Messages from the Server"
+}

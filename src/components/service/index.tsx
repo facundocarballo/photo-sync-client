@@ -9,7 +9,7 @@ export const Service = () => {
     const {
         service,
         infoMessage,
-
+        jsonLanguague,
         setService,
         handlePhotos,
         handleVideos,
@@ -47,8 +47,8 @@ export const Service = () => {
     return (
         <>
             <Alert
-                title="Service"
-                info="This app have three services that you can use to send your photos and videos to your computer. You can send all the photos of your smartphone (SEND PHOTOS [ALL]). You can send all the videos that you have in your smartphone (SEND VIDEOS [ALL]). You can send some selected photos and videos of your smartphone (Select some Photos/Videos)."
+                title={jsonLanguague.service_title}
+                info={jsonLanguague.service_info}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
@@ -56,7 +56,7 @@ export const Service = () => {
                 <HStack w='full'>
                     <Spacer />
                     <Center>
-                        <Text>Select the service that you want to use</Text>
+                        <Text>{jsonLanguague.service_select_msg}</Text>
                     </Center>
                     <Spacer />
                     <Button bg='gray.200' onPress={() => setIsOpen(true)}>
@@ -71,8 +71,7 @@ export const Service = () => {
                         selectedValue={service}
                         minWidth='60%'
                         minHeight='40px'
-                        accessibilityLabel="Choose Service"
-                        placeholder="Choose Service"
+                        placeholder={jsonLanguague.service_select_placeholder}
                         _selectedItem={{
                             bg: 'blue.300',
                             endIcon: <CheckIcon size='4' />
@@ -80,9 +79,18 @@ export const Service = () => {
                         mt={1}
                         onValueChange={itemValue => setService(itemValue)}
                     >
-                        <Select.Item label="Send Photos [ALL]" value={SERVICE_PHOTOS} />
-                        <Select.Item label="Send Videos [ALL]" value={SERVICE_VIDEOS} />
-                        <Select.Item label="Select some Photos/Videos" value={SERVICE_SELECT} />
+                        <Select.Item
+                            label={jsonLanguague.service_select_photos_label}
+                            value={SERVICE_PHOTOS}
+                        />
+                        <Select.Item
+                            label={jsonLanguague.service_select_videos_label}
+                            value={SERVICE_VIDEOS}
+                        />
+                        <Select.Item
+                            label={jsonLanguague.service_select_select_label}
+                            value={SERVICE_SELECT}
+                        />
                     </Select>
                     <Spacer />
                     <Center>
@@ -92,7 +100,7 @@ export const Service = () => {
                             h='40px'
                             fontWeight='bold'
                             onPress={handleService}>
-                            Send
+                            {jsonLanguague.service_send}
                         </Button>
                     </Center>
                     <Box w='10px' />

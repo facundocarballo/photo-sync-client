@@ -7,12 +7,17 @@ import { ERROR_GETTING_DATA, ERROR_SAVING_DATA, IP_ADDRESS_KEY } from "../../han
 
 export const IP = () => {
     // Context
-    const { localIpAddress, setLocalIpAddress, infoMessage, setInfoMessage } = useProvider();
+    const {
+        localIpAddress,
+        infoMessage,
+        jsonLanguague,
+        setLocalIpAddress,
+        setInfoMessage
+    } = useProvider();
 
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
     const [ipAddress, setIpAddress] = React.useState<string>('');
-
 
     // Methods
     const handleSaveIP = async () => {
@@ -45,8 +50,8 @@ export const IP = () => {
     return (
         <>
             <Alert
-                title="IP Address"
-                info="This app needs the IP Address of your computer where it's running the server to connect with. Check the Desktop App to see your IP Address."
+                title={jsonLanguague.ip_address_title}
+                info={jsonLanguague.ip_address_info}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
@@ -57,8 +62,8 @@ export const IP = () => {
                         <Text>
                             {
                                 localIpAddress == null ?
-                                    `You have to GET the IP Address of your server.` :
-                                    `IP Address: ${localIpAddress}`
+                                    jsonLanguague.ip_address_get_msg :
+                                    `${jsonLanguague.ip_address_title}: ${localIpAddress}`
                             }
                         </Text>
                     </Center>
@@ -83,7 +88,7 @@ export const IP = () => {
                             borderRadius={10}
                         />
                     </Center>
-                    <Button bg='blue.500' onPress={handleSaveIP}>SAVE</Button>
+                    <Button bg='blue.500' onPress={handleSaveIP}>{jsonLanguague.ip_address_save}</Button>
                 </HStack>
 
             </VStack>

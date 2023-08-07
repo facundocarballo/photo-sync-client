@@ -1,4 +1,12 @@
-import * as MediaLibrary from 'expo-media-library';
+import { ILanguageJSON } from "../languagues/interface";
+
+export type Language = "en" | "es";
+
+export interface ILanguage {
+    json: ILanguageJSON,
+    symbol: Language,
+    flag: string | undefined
+};
 
 export interface IPhotoSyncContext {
     // Attributes
@@ -6,7 +14,9 @@ export interface IPhotoSyncContext {
     service: string | undefined,
     infoMessage: string[],
     amountSended: number | undefined,
-    totalAmount: number | undefined
+    totalAmount: number | undefined,
+    language: Language,
+    jsonLanguague: ILanguageJSON,
 
     // React useState Methods
     setLocalIpAddress: (_localIpAddress: string | null) => void,
@@ -14,11 +24,12 @@ export interface IPhotoSyncContext {
     setInfoMessage: (_infoMessage: string[]) => void,
     setAmountSended: (_amountSended: number | undefined) => void,
     setTotalAmount: (_totalAmount: number | undefined) => void,
+    setLanguage: (_languague: Language) => void,
+    setJsonLanguague: (_jsonLanguague: ILanguageJSON) => void,
 
     // Methods
     handlePhotos: () => Promise<boolean>,
     handleVideos: () => Promise<boolean>,
     handleSelect: () => Promise<boolean>,
 
-
-}
+};

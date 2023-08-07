@@ -1,12 +1,12 @@
 import React from "react";
-import { AlertDialog, Button } from "native-base";
+import { AlertDialog, Button, Text } from "native-base";
 import { useProvider } from "../../context";
 import { IAlert } from "./interface";
 
 
-export const Alert = ({title, info, isOpen, setIsOpen}: IAlert) => {
+export const Alert = ({ title, info, isOpen, setIsOpen }: IAlert) => {
     // Context
-    const {  } = useProvider();
+    const { } = useProvider();
 
     // Attributes
     const onClose = () => setIsOpen(false);
@@ -23,7 +23,9 @@ export const Alert = ({title, info, isOpen, setIsOpen}: IAlert) => {
                 <AlertDialog.Content>
                     <AlertDialog.CloseButton />
                     <AlertDialog.Header>{title}</AlertDialog.Header>
-                    <AlertDialog.Body>{info}</AlertDialog.Body>
+                    <AlertDialog.Body>
+                        {info.map((i, idx) => <Text key={idx}>{i}</Text>)}
+                    </AlertDialog.Body>
                     <AlertDialog.Footer>
                         <Button colorScheme="green" onPress={onClose}>
                             OK

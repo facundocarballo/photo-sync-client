@@ -1,10 +1,13 @@
 import React from 'react';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from "expo-image-picker";
-import { IPhotoSyncContext } from './interface';
+import { IPhotoSyncContext, Language } from './interface';
 import { findAsset, getAssetsNeeded, saveAsset } from '../handlers/assets';
 import { ERROR_AMOUNT_SENDED_UNDEFINED, ERROR_NO_ASSETS, ERROR_SAVING_DATA, ERROR_SENDING_MESSAGE, IMAGE_ENDPOINT, PHOTO_MEDIA_TYPE, PORT, VIDEO_ENDPOINT, VIDEO_MEDIA_TYPE } from '../handlers/constants';
 import { getMessage, sendMessage } from '../handlers/Messages';
+import { ILanguageJSON } from '../languagues/interface';
+import ES from '../languagues/es.json';
+import EN from '../languagues/en.json';
 
 
 // Context Initialization
@@ -15,6 +18,8 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     infoMessage: [],
     amountSended: 0,
     totalAmount: 0,
+    language: "en",
+    jsonLanguague: EN,
 
     // React useState Methods
     setLocalIpAddress: () => { },
@@ -22,6 +27,8 @@ const PhotoSyncContext = React.createContext<IPhotoSyncContext>({
     setInfoMessage: () => { },
     setAmountSended: () => { },
     setTotalAmount: () => { },
+    setLanguage: () => { },
+    setJsonLanguague: () => { },
 
     // Methods
     handlePhotos: async () => false,
@@ -38,6 +45,8 @@ export const ContextProvider: React.FC<any> = (props: any) => {
     const [infoMessage, setInfoMessage] = React.useState<string[]>([]);
     const [amountSended, setAmountSended] = React.useState<number | undefined>(0);
     const [totalAmount, setTotalAmount] = React.useState<number | undefined>(0);
+    const [language, setLanguage] = React.useState<Language>("en");
+    const [jsonLanguague, setJsonLanguague] = React.useState<ILanguageJSON>(EN);
 
     // Variables
 
@@ -167,12 +176,16 @@ export const ContextProvider: React.FC<any> = (props: any) => {
         infoMessage,
         amountSended,
         totalAmount,
+        language,
+        jsonLanguague,
 
         setLocalIpAddress,
         setService,
         setInfoMessage,
         setAmountSended,
         setTotalAmount,
+        setLanguage,
+        setJsonLanguague,
 
         handlePhotos,
         handleVideos,

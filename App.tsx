@@ -1,14 +1,13 @@
 import React from 'react';
-import { VStack, NativeBaseProvider, Center, Heading, Box, Button } from 'native-base';
-import { ContextProvider, useProvider } from './src/context';
-import { getData } from './src/handlers/storage';
-import { ERROR_GETTING_DATA, IP_ADDRESS_KEY } from './src/handlers/constants';
+import { VStack, NativeBaseProvider, Center, Heading, Box, Spacer, HStack } from 'native-base';
+import { ContextProvider } from './src/context';
 import { IP } from './src/components/IP';
 import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
 import { Sending } from './src/components/sending';
 import { Messages } from './src/components/messages';
 import { TheDivider } from './src/components/divider/divider';
+import { SelectLanguages } from './src/components/languages';
 
 export default function App() {
   return (
@@ -16,10 +15,16 @@ export default function App() {
       <NativeBaseProvider>
         <>
           <VStack bg='gray.200'>
-            <Box h='50px' />
-            <Center>
-              <Heading>PhotoSync</Heading>
-            </Center>
+            <Box h='70px' />
+            <HStack w='full'>
+              <Spacer />
+              <Center>
+                <Heading>PhotoSync</Heading>
+              </Center>
+              <Spacer />
+              <SelectLanguages />
+              <Box w='10px' />
+            </HStack>
             <TheDivider />
             <IP />
             <TheDivider />

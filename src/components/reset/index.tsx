@@ -5,9 +5,11 @@ import { Alert } from "../alert";
 import { getAssets } from "../../handlers/assets";
 import { PHOTO_MEDIA_TYPE, VIDEO_MEDIA_TYPE } from "../../handlers/constants";
 import { saveData } from "../../handlers/storage";
+import { useProvider } from "../../context";
 
 export const Reset = () => {
-
+    // Context
+    const { jsonLanguague } = useProvider();
     // Attributes
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
@@ -27,15 +29,15 @@ export const Reset = () => {
     return (
         <>
             <Alert
-                title="RESET"
-                info="This RESET Button will delete of the memory all the photos that you sended. So you can sended again. Because the app when sends a photo or video will mark that item as sended and will ignore that item to send on future request."
+                title={jsonLanguague.reset_title}
+                info={jsonLanguague.reset_info}
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
             <HStack w='full'>
                 <Spacer />
                 <Center w='80%'>
-                    <Button w='80%' onPress={handleReset} bg='red.500'>RESET ALL</Button>
+                    <Button w='80%' onPress={handleReset} bg='red.500'>{jsonLanguague.reset_title}</Button>
                 </Center>
                 <Spacer />
                 <Button bg='gray.200' onPress={() => setIsOpen(true)}>

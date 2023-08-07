@@ -1,0 +1,31 @@
+{
+    "ip_address_title": "Direccion IP",
+    "ip_address_info": [
+        "Esta app necestia de la Direccion IP de tu computadora donde esta corriendo el servidor, para que se puedan conectar.",
+        "Fijate en la Aplicacion de Escritorio que saldra la Direccion IP de tu computadora."
+    ],
+    "ip_address_get_msg": "Tienes que guardar la Direccion IP de tu computadora.",
+    "ip_address_save": "Guardar",
+    "service_title": "Servicios",
+    "service_info": [
+        "Esta Aplicacion cuenta con tres servicios que puedes usar para enviar tus fotos y videos a tu computadora.",
+        "1. (ENVIAR FOTOS [TODAS]) Puedes enviar todas las fotos de tu galeria usando la opcion.",
+        "2. (ENVIAR VIDEOS [TODOS]) Puedes enviar todos los videos de tu galeria usando la opcion.",
+        "3. (SELECCIONAR Fotos/Videos) Puedes seleccionar algunas fotos y videos de tu galeria usando la opcion."
+    ],
+    "service_select_msg": "Selecciona el servicio que quieres usar.",
+    "service_select_placeholder": "Elegir Servicio",
+    "service_select_photos_label": "ENVIAR FOTOS [TODAS]",
+    "service_select_videos_label": "ENVIAR VIDEOS [TODOS]",
+    "service_select_select_label": "SELECCIONAR FOTOS/VIDEOS",
+    "service_send": "ENVIAR",
+    "reset_title": "RESET",
+    "reset_info": [
+        "El boton de RESET eliminara de la memoria del celular todas las imagenes/videos que se enviaron en algun momento",
+        "Esto no eliminara las imagenes/videos de tu galeria, solo de la memoria que usa la app",
+        "Cuando utilizar el boton de RESET?",
+        "- Cuando queremos volver a enviar imagenes/videos a traves de esta Aplicacion que ya se habian enviado en algun momento."
+    ],
+    "sending_title": "Enviando",
+    "messages_title": "Mensajes del Servidor"
+}

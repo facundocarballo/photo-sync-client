@@ -1,10 +1,9 @@
 import { VStack, Text, Box, Center, Heading } from "native-base";
 import { useProvider } from "../../context";
-import { v4 as uuidv4 } from 'uuid';
 
 export const Messages = () => {
     // Context
-    const { infoMessage } = useProvider();
+    const { infoMessage, jsonLanguague } = useProvider();
 
     // Component
     return (
@@ -13,7 +12,7 @@ export const Messages = () => {
                 infoMessage.length > 0 ?
                     <Center>
                         <Heading>
-                            Messages from the Server
+                            {jsonLanguague.messages_title}
                         </Heading>
                     </Center> : null
             }

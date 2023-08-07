@@ -1,10 +1,10 @@
-import { VStack, Center, Text, Progress } from "native-base";
+import { Center, Text, Progress } from "native-base";
 import { useProvider } from "../../context";
 import { SERVICE_SELECT } from "../../handlers/constants";
 
 export const Sending = () => {
     // Context
-    const { amountSended, totalAmount, service } = useProvider();
+    const { amountSended, totalAmount, service, jsonLanguague } = useProvider();
 
     // Methods
     const getProgessAmount = () => {
@@ -19,7 +19,7 @@ export const Sending = () => {
             {
                 amountSended != undefined && amountSended > 0 ?
                     <Center>
-                        <Text>Sending {amountSended} of {totalAmount} {service == SERVICE_SELECT ? null : service}</Text>
+                        <Text>{jsonLanguague.sending_title} {amountSended} of {totalAmount} {service == SERVICE_SELECT ? null : service}</Text>
                         <Progress
                             h='20px'
                             w='90%'
