@@ -27,7 +27,7 @@ export const Service = () => {
         setInfoMessage([]); // adding this line, the component of the messages render perfectly.
         switch (service) {
             case SERVICE_PHOTOS:
-                res = await handlePhotos();
+                await handlePhotos();
                 break;
             case SERVICE_VIDEOS:
                 await handleVideos();
