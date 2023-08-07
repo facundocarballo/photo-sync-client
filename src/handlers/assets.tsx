@@ -33,7 +33,7 @@ export async function getAssetsNeeded(mediaType: MediaLibrary.MediaTypeValue): P
 
     for (const asset of assets) {
         const isSended = await getData(asset.id);
-        if (isSended == null) {
+        if (isSended == "null") {
             assetsNeeded.push(asset);
         }
     }
