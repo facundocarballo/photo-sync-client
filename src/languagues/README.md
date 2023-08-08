@@ -60,8 +60,8 @@ For example
                 return "es";
             case "en":
                 return "en";
-    				case "fr":
-    						return "fr";
+    		case "fr":
+    			return "fr";
             default:
                 return null;
         }
@@ -90,7 +90,7 @@ For example
     export const Languages: ILanguage[] = [
         es,
         en,
-    		fr
+    	fr
     ]
     ```
     
