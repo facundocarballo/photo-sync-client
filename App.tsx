@@ -6,7 +6,7 @@ import { Service } from './src/components/service';
 import { Reset } from './src/components/reset';
 import { Sending } from './src/components/sending';
 import { Messages } from './src/components/messages';
-import { TheDivider } from './src/components/divider/divider';
+import { TheDivider } from './src/components/divider';
 import { SelectLanguages } from './src/components/languages';
 
 export default function App() {
