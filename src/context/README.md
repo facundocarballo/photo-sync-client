@@ -1,3 +1,5 @@
+# Context
+
 The Context is like an intermediate between all the components of this app. The components can read and update variables that all the components are listening to it.
 
 ## Where is Implemented?
