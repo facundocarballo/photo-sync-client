@@ -9,6 +9,7 @@ Most of us have a lot of free space in our personal computers, there is a lot of
 ## How PhotoSync works?
 ![DIAGRAM](https://i.ibb.co/P1d4Fm2/Captura-de-pantalla-2023-08-08-a-la-s-17-24-39.png)
 PhotoSync will organize all of your images and videos in folders by year, month, and day, as you can see in this example.
+
 ![Folder structure example](https://i.ibb.co/TRzQVHV/Folders-example.png)
 
 ## How Can I Use PhotoSync?
@@ -20,7 +21,9 @@ PhotoSync will organize all of your images and videos in folders by year, month,
     > The Local IP Address of your computer is shown in the Desktop App
 6. You have to select the service that you want to use on PhotoSync
     > SEND PHOTOS [ALL]
+
     > SEND VIDEOS [ALL]
+    
     > SELECT PHOTOS/VIDEOS
 7. Press the Send Button to finally back up all of your images and videos on your computer.
 
