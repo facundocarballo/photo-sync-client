@@ -23,7 +23,7 @@ PhotoSync will organize all of your images and videos in folders by year, month,
     > SEND PHOTOS [ALL]
 
     > SEND VIDEOS [ALL]
-    
+
     > SELECT PHOTOS/VIDEOS
 7. Press the Send Button to finally back up all of your images and videos on your computer.
 
@@ -38,13 +38,20 @@ To do that you have to have installed on your computer:
 - NodeJS
 - npm
 
-Once you have that, you can clone this repo on your computer and then install all the dependencies that this project needs.
+Once you have that, you can clone this repo on your computer 
+```bash
+git clone https://github.com/facundocarballo/photo-sync-client.git
+```
+
+Then install all the dependencies that this project needs.
 
 ```bash
 npm install
 ```
-Then, you have to run the expo project
+
+Finally, you have to run the expo project
 ```bash
 npx expo start
 ```
-And finally, scan the QR Code that the expo shows in the command line.
+
+Now, scan the QR Code that the expo shows in the command line.
