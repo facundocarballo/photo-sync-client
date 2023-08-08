@@ -1,3 +1,5 @@
+# Languages
+
 This folder contains all the files needed to handle multiple languages in this app.
 
 To handle multiple languages in this app we use JSON Files to map a key with a corresponding word in some language.
