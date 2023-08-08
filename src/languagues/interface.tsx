@@ -1,3 +1,11 @@
+export type Language = "en" | "es";
+
+export interface ILanguage {
+    json: ILanguageJSON,
+    symbol: Language,
+    flag: string | undefined
+};
+
 export interface ILanguageJSON {
     ip_address_title: string,
     ip_address_info: string[],

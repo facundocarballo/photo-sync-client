@@ -1,12 +1,4 @@
-import { ILanguageJSON } from "../languagues/interface";
-
-export type Language = "en" | "es";
-
-export interface ILanguage {
-    json: ILanguageJSON,
-    symbol: Language,
-    flag: string | undefined
-};
+import { ILanguageJSON, Language } from "../languagues/interface";
 
 export interface IPhotoSyncContext {
     // Attributes

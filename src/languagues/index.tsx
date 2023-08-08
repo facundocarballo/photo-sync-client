@@ -1,6 +1,6 @@
 import ES from './es.json';
 import EN from './en.json';
-import { ILanguage, Language } from "../context/interface";
+import { ILanguage, Language } from "./interface";
 
 export const languages = ['es', 'en'];
 

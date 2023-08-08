@@ -1,12 +1,11 @@
 import React from 'react';
 import * as MediaLibrary from 'expo-media-library';
 import * as ImagePicker from "expo-image-picker";
-import { IPhotoSyncContext, Language } from './interface';
+import { IPhotoSyncContext } from './interface';
 import { findAsset, getAssetsNeeded, saveAsset } from '../handlers/assets';
 import { ERROR_AMOUNT_SENDED_UNDEFINED, ERROR_NO_ASSETS, ERROR_SAVING_DATA, ERROR_SENDING_MESSAGE, IMAGE_ENDPOINT, PHOTO_MEDIA_TYPE, PORT, VIDEO_ENDPOINT, VIDEO_MEDIA_TYPE } from '../handlers/constants';
 import { getMessage, sendMessage } from '../handlers/Messages';
-import { ILanguageJSON } from '../languagues/interface';
-import ES from '../languagues/es.json';
+import { ILanguageJSON, Language } from '../languagues/interface';
 import EN from '../languagues/en.json';
 
 
